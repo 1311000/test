@@ -28,7 +28,7 @@ def moving_average(values: Sequence[float], window: int) -> list[float]:
         return []
 
     averages: list[float] = []
-    for index in range(len(values) - window):
+    for index in range(len(values) - window + 1):
         chunk = values[index : index + window]
         averages.append(sum(chunk) / window)
     return averages
