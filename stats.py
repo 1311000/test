@@ -28,7 +28,9 @@ def moving_average(values: Sequence[float], window: int) -> list[float]:
         return []
 
     averages: list[float] = []
-    for index in range(len(values) - window):
+    # Every start index that still leaves a full window must be visited, so the
+    # final window ends *on* the last value: the bound is inclusive.
+    for index in range(len(values) - window + 1):
         chunk = values[index : index + window]
         averages.append(sum(chunk) / window)
     return averages
